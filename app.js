@@ -6,11 +6,11 @@ const inputs = {
 	url: core.getInput('url'),
 }
 
-shortener.short(inputs.url, function(res) {
+shortener.short(inputs.url, function(err, res) {
 	const url = new URL(res)
-	if (!url.protocol.startsWith("http")) {
+	if (!url.protocol.startsWith("https") || !url.protocol.startsWith("http") || err) {
 		process.exitCode = 1;
-		console.log(res);
+		console.log(res, err);
 	} else {
 		core.setOutput("short_url", url.toString());
 	}
