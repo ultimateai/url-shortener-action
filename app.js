@@ -1,4 +1,4 @@
-const isgd = require('isgd');
+const shortener = require('node-url-shortener');
 const core = require('@actions/core');
 const github = require('@actions/github');
 
@@ -6,7 +6,7 @@ const inputs = {
 	url: core.getInput('url'),
 }
 
-isgd.shorten(inputs.url, function(res) {
+shortener.short(inputs.url, function(res) {
 	const url = new URL(res)
 	if (!url.protocol.startsWith("http")) {
 		process.exitCode = 1;
