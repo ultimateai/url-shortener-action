@@ -10,8 +10,5 @@ outputs:
   short_url:
     description: 'The short URL'
 runs:
-  using: 'node12'
+  using: 'node16'
   main: 'app.js'
-branding:
-  icon: 'minimize-2'
-  color: 'purple'
